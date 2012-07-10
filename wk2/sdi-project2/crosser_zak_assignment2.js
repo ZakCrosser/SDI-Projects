@@ -54,7 +54,26 @@ function question(theAnimals) {
   }
 }
 
+// String Function
+function myfunction(excitment){
+  var concatination = excitment;
+  if (excitment === "Yay! we are going to the zoo!"){
+    concatination += " can't wait to get there!";
+  } else {
+    concatination += ", we want to see more animals.";
+  }
+  return concatination;
+}
 
+setHoursSlept(wellSlept);
+console.log(wakeUp(hoursSlept));
+console.log(myfunction("Yay! we are going to the zoo!"));
+animalsWeSaw = goSeeingAnimal(animals, faces);
+for( var x in animalsWeSaw) {
+  console.log(animalsWeSaw[x]);
+}
+console.log(myfunction(leavingTheZoo));
+console.log(question(animals));
 
 /*we we all excited when told we were going to the zoo
 we all wanted to see the elephants, tigers, monkeys, and the giraffes
