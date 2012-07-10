@@ -36,6 +36,25 @@ function wakeUp(hoursSlept) {
   }
 }
 
+// Array Function
+function goSeeingAnimal(theAnimals, facesMade) {
+  var seeingAnimals = new Array(theAnimals.length);
+  for (var i = 0; i < theAnimals.length; i++) {
+    seeingAnimals[i] = "When we saw the " + theAnimals[i] + " " + "we" + " " + facesMade[i];
+  }
+  return seeingAnimals;
+}
+
+// Boolean Function
+function question(theAnimals) {
+  if (animals.indexOf('Tiger') >= 0){ 
+    return "Dad asked us if we got to see the tigers and we answered, We saw the tigers and were scared by them.";
+  } else {
+    return "Dad asked us if we got to see the tigers and we answered, We wanted to see the tigers but were unable.";
+  }
+}
+
+
 
 /*we we all excited when told we were going to the zoo
 we all wanted to see the elephants, tigers, monkeys, and the giraffes
