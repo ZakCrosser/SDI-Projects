@@ -17,6 +17,24 @@ var animals = [
     hoursSlept = 8,
     wellSlept = true;
     
+    
+// Procedure
+function setHoursSlept(wellSlept) {
+  if( wellSlept ) {
+    hoursSlept = 8;
+  } else {
+    hoursSlept = 5;
+  }
+}
+
+// Number function
+function wakeUp(hoursSlept) {
+  if (hoursSlept >= 8) {
+    return "Well rested for the Zoo!";
+  } else {
+    return "Its going to be a long day because I did not get enough sleep.";
+  }
+}
 
 
 /*we we all excited when told we were going to the zoo
