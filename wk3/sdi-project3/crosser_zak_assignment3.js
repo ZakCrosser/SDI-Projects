@@ -85,3 +85,91 @@
     return visitedAnimalsCount;
   });
 
+// DadsFavorite: Object
+  //Method Procedure: initialize
+  // Argument: String
+  var DadsFavorite = (function(favoriteAnimal) {
+    // Property: Object
+    this.animal = favoriteAnimal;
+    // Return Object
+  });
+  
+  // Method Function: visited
+  // Argument: Object
+  DadsFavorite.prototype.visited = (function(zoo) {
+    // Local variables
+    var returnValue = this.animal.has_been_visited();
+    
+    // Output
+    console.log("Dad wanted to know if we visited the " + this.animal.name + ".");
+    // Conditonal
+    if( returnValue ) {
+      // Output
+      console.log("We did and he smiled.");
+    } else {
+      // Output
+      console.log("We didn't and he frowned.");
+    };
+    
+    // Return Boolean
+    return returnValue;
+  });
+
+// Method Function: visitAnimalsAtZoo
+// Argument: Object
+// Argument: Array
+var makeFacesAtTheAnimalsAtTheZoo = (function(zoo, faces) {
+  // Local Variables
+  var zooAnimalIndex = 0;
+  // While Loop
+  while( zoo.hasAnimalsLeftToVisit() ) {
+    // Nested Loop
+    for( var facesIndex = 0; facesIndex < faces.length; facesIndex++ ) {
+      faces[facesIndex].makeFaceAtAnimal(zoo.animals[zooAnimalIndex]);
+    };
+    zoo.animals[zooAnimalIndex].visit();
+    zooAnimalIndex++;
+  };
+  
+});
+
+// Function: sleptWell
+// Argument: Boolean
+// Argument: Number
+var sleptWell = (function(hoursSlept, enoughHoursToSleep) {
+  // Conditonal
+  if( enoughHoursToSleep === hoursSlept ) {
+    // Output
+    console.log("Sleeping for " + hoursSlept + " makes us feel good.");
+  } else {
+    // Output
+    console.log("Sleeping for " + hoursSlept + " makes us feel sleepy, " + enoughHoursToSleep + " would of been better.");
+  };
+  // Back
+});
+
+// Global Variables
+// JSON data
+var arraysInJson = {'animalNames': [
+      'Penguins',
+      'Tigers',
+      'Lions',
+      'Bears',
+      'Elephants'
+    ],
+    'faces': [
+      ( new Face('bug eyeed') ),
+      ( new Face('frowny') ),
+      ( new Face('smiley') ),
+      ( new Face('crazy') ),
+      ( new Face('amazed') )
+    ]};
+var zoo = new Zoo(arraysInJson['animalNames']);
+var dadsFavorite = new DadsFavorite(zoo.animals[1]),
+    hoursSlept = 5,
+    enoughHoursToSleep = 8;
+
+sleptWell(hoursSlept, enoughHoursToSleep);
+makeFacesAtTheAnimalsAtTheZoo( zoo, arraysInJson['faces'] );
+dadsFavorite.visited(zoo);
+console.log("Today at the zoo we visited " + zoo.numberOfVisitedAnimals() + " animals.");
