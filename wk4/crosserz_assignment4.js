@@ -56,6 +56,52 @@ myLibrary.prototype.stringToNumber = function( string ) {
   return parseInt(string,1);
 };
 
+//Array Function 1- Small Array
+myLibrary.prototype.minimumAboveInteger = function( array, minimumInteger ) {
+  var sortedArray = array.sort();
+  minimum = undefined;
+  for( i in sortedArray ) {
+    if( sortedArray[i] > minimumInteger ) {
+      minimum = sortedArray[i];
+      break;
+    }
+  }
+  return minimum;
+};
+
+//Array Function 2- Total Value
+myLibrary.prototype.sumJustNumbers = function( array ) {
+  var sum = undefined,
+      regex = /^\d{1,}$/;
+  for( i in array ) {
+    if( regex.test(array[i]) ) {
+      if( sum === undefined ) {
+        sum = 0;
+      }
+      sum += parseInt(array[i],1);
+    }
+  }
+  return sum;
+};
+
+ 
+// //Array Function 3- Array of Objects// 
+myLibrary.prototype.sortObjects = function( arrayOfObjects, objectKey ) {
+  var temp;
+  for( i1 in arrayOfObjects ) {
+    for( i2 in arrayOfObjects ) {
+      if( arrayOfObjects[i1][objectKey] < arrayOfObjects[i2][objectKey] ) {
+        temp = arrayOfObjects[i1][objectKey];
+        arrayOfObjects[i1][objectKey] = arrayOfObjects[i2][objectKey];
+        arrayOfObjects[i2][objectKey] = temp;
+      }
+    }
+  }
+  return arrayOfObjects;
+};
+
+
+
 
 
 var phone = "513-410-3403",
@@ -71,7 +117,15 @@ var phone = "513-410-3403",
     today = new Date(),
     birthday = new Date("23 August 1987"),
     stringNumber = "100101 is a number",
-    
+    theArray = [34,1,5,8,13,1,2,3,21,55],
+    minimum = 6,
+    theArray2 = ['My', 'birthday', 'is', 'August', '23rd', '1987', 'that', 'makes', 'me', '24', 'as', 'of', 'June', '2012'],
+    map = Array.prototype.map;
+    unorderedFibArray = [{index: 34},{index: 1},{index: 5},{index: 8},{index: 13},{index: 1},{index: 2},{index: 3},{index: 21},{index: 55}],
+    myLib = new myLibrary,
+    stringOfUnsortedArray = map.call(unorderedFibArray, function(x) { return JSON.stringify(x); }),
+    stringOfSortedArray = map.call(myLib.sortObjects(unorderedFibArray, 'index'), function(x) { return JSON.stringify(x); });
+
 //Call Phone Number function
 console.log ("is " + phone + " a valid phone number?");
 if (myLib.function1(phone)) {
@@ -114,3 +168,11 @@ console.log( "I have been alive for " + myLib.hourDifference(today, birthday) + 
 //Call Number/String Function
 console.log( "'" + stringNumber + "' to number is: " + myLib.stringToNumber(stringNumber) );
 
+//Call Small Array Function
+console.log( "The smallest number under " + minimum + ' in ' + theArray + ' is: ' + myLib.minimumAboveInteger(theArray, minimum) );
+
+//Call Total Value Function
+console.log( "The sum of all 'just numbers' of " + theArray2 + " is: " + myLib.sumJustNumbers(theArray2) );
+
+//Call Array of Object Funtion
+console.log( stringOfUnsortedArray + " sorted is: " + stringOfSortedArray);
